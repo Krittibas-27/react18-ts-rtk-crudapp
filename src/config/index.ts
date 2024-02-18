@@ -1,0 +1,1 @@
+export const json_server_url=`${process.env.REACT_APP_JSON_DB_URL}`
