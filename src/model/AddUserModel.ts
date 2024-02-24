@@ -23,4 +23,15 @@ export interface TError {
 export interface TTouched {
     [key: string]: boolean;
 }
-
+export interface IEditUser {
+    id?: string | number
+    username: string;
+    uemail: string;
+    uphone: string;
+    ugender: string;
+    uperformance: string;
+    ustatus: boolean;
+    udetails: string;
+    fullDetails: string
+    technology: TOption[]
+}

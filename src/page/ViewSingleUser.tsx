@@ -16,7 +16,6 @@ const ViewSingleUser = () => {
     }
     useEffect(() => {
         singleUserView()
-
         return () => {
             singleUserView()
         }
@@ -56,7 +55,34 @@ const ViewSingleUser = () => {
                                     <td>{singleUser.active ? <div className='text-success'>Active</div> : <div className='text-danger'>Inactive</div>}</td>
                                 </tr>
                             }
-                            
+                            {
+                                singleUser.gender  &&
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>{singleUser.gender}</td>
+                                </tr>
+                            }
+                            {
+                                singleUser.performance &&
+                                <tr>
+                                    <td>Performance</td>
+                                    <td>{singleUser.performance}</td>
+                                </tr>
+                            }
+                            {
+                                singleUser.userdetails &&
+                                <tr>
+                                    <td>User Details</td>
+                                    <td>{singleUser.userdetails}</td>
+                                </tr>
+                            }
+                            {
+                                singleUser.fullDetails &&
+                                <tr>
+                                    <td>User Full Details</td>
+                                    <td><span dangerouslySetInnerHTML={{__html:singleUser.fullDetails}}></span></td>
+                                </tr>
+                            } 
                         </tbody>
                     </Table>
                     }

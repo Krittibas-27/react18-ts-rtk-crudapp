@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Button, Container, Table } from 'react-bootstrap'
 import { useAppDispatch, useAppSelector } from '../reduxToolkit/hooks'
-import { getAllUser } from '../reduxToolkit/actions/UserActions'
+import { deletetUser, getAllUser } from '../reduxToolkit/actions/UserActions'
 import SpinerLoading from '../components/SpinerLoading'
 import { IUserModel } from '../reduxToolkit/models/UserModel'
 import { useNavigate } from 'react-router-dom'
@@ -24,6 +24,22 @@ const UserListing = () => {
     }
     const addNewUser = ()=>{
         navigate('/user/addnewuser')
+    }
+    const editUserData=(editdata: TViewUser)=>{
+        console.log(editdata)
+        navigate(`/user/edit/${editdata.id}`,{
+            state: {editSingleUser : editdata}
+        })
+    }
+    const deleteUser=(userData: TViewUser)=>{
+        if(window.confirm('Do you want to delete')){
+            dispatch(deletetUser({deleteId : userData.id})).then((res)=>{
+                if(res.type ==="delete/single-user/fulfilled"){
+                    dispatch(getAllUser())  
+                }
+            })
+        }
+        
     }
     useEffect(() => {
         dispatch(getAllUser())
@@ -66,8 +82,8 @@ const UserListing = () => {
                                                 <td>{item.active ? <div className='text-success'>Active</div> : <div className='text-danger'>Inactive</div>}</td>
                                                 <td>
                                                     <Button variant="primary" size='sm' className='mx-1' onClick={()=>viewUser(item)}>View</Button>
-                                                    <Button variant="success"  size='sm' className='mx-1'>Edit</Button>
-                                                    <Button variant="danger" size='sm' className='mx-1'>Delete</Button>
+                                                    <Button variant="success"  size='sm' className='mx-1'  onClick={()=>editUserData(item)}>Edit</Button>
+                                                    <Button variant="danger" size='sm' className='mx-1' onClick={()=>deleteUser(item)}>Delete</Button>
                                                 </td>
                                             </tr>
                                         )

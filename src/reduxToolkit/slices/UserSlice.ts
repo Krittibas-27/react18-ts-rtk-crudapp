@@ -1,13 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IUserModel } from "../models/UserModel";
-import { addNewUser, getAllUser, viewUser } from "../actions/UserActions";
-import { IALLFields } from "../../model/AddUserModel";
+import { ISingleUserModel, IUserModel } from "../models/UserModel";
+import { addNewUser, deletetUser, editUser, getAllUser, viewUser } from "../actions/UserActions";
+import { IALLFields, IEditUser } from "../../model/AddUserModel";
 
 interface IinitialState {
     isLoading : boolean
     allUser : IUserModel[]
-    singleUser : IUserModel
+    singleUser : ISingleUserModel
     adduser : IALLFields
+    editSingleuser: IEditUser
 }
 
 const initialState : IinitialState = {
@@ -15,10 +16,15 @@ const initialState : IinitialState = {
     allUser : [],
     singleUser: {
         id: "",
-        username: "",
-        email : "",
-        phone : "",
-        active : false 
+        active: false,
+        email: "",
+        fullDetails: "",
+        gender: "",
+        performance:"",
+        phone:"",
+        technology:[],
+        userdetails:"",
+        username:"",
     },
     adduser:{
         id:"",
@@ -30,6 +36,18 @@ const initialState : IinitialState = {
         ustatus: false,
         udetails: "",
         fullDetails:""
+    },
+    editSingleuser:{
+        id:"",
+        username: "",
+        uemail: "",
+        uphone: "",
+        ugender: "",
+        uperformance: "",
+        ustatus: false,
+        udetails: "",
+        fullDetails:"",
+        technology:[]
     }
 }
 const UserSlice = createSlice({
@@ -52,7 +70,7 @@ const UserSlice = createSlice({
         builder.addCase(viewUser.pending, (state)=>{
             state.isLoading = true
         })
-        builder.addCase(viewUser.fulfilled, (state, actions:PayloadAction<IUserModel>)=>{
+        builder.addCase(viewUser.fulfilled, (state, actions:PayloadAction<ISingleUserModel>)=>{
             state.isLoading = false
             state.singleUser = actions.payload
         })
@@ -68,6 +86,28 @@ const UserSlice = createSlice({
             state.adduser = actions.payload
         })
         builder.addCase(addNewUser.rejected, (state)=>{
+            state.isLoading = false
+        })
+        // edit user
+        builder.addCase(editUser.pending, (state)=>{
+            state.isLoading = true
+        })
+        builder.addCase(editUser.fulfilled, (state, actions:PayloadAction<any>)=>{
+            state.isLoading = false
+            state.editSingleuser = actions.payload
+        })
+        builder.addCase(editUser.rejected, (state)=>{
+            state.isLoading = false
+        })
+        // delete user
+        builder.addCase(deletetUser.pending, (state)=>{
+            state.isLoading = true
+        })
+        builder.addCase(deletetUser.fulfilled, (state, actions:PayloadAction<any>)=>{
+            state.isLoading = false
+            state.allUser = [...state.allUser]
+        })
+        builder.addCase(deletetUser.rejected, (state)=>{
             state.isLoading = false
         })
     }

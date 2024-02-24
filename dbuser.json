@@ -50,10 +50,9 @@
       "id": 1707394010279
     },
     {
-      "id": 1708236488648,
-      "username": "asddff",
-      "email": "asadad@asd.sdf",
-      "phone": "1212121212",
+      "username": "React",
+      "email": "react@asd.sdf",
+      "phone": "9112121212",
       "active": true,
       "gender": "male",
       "technology": [
@@ -66,30 +65,10 @@
           "label": "React"
         }
       ],
-      "performance": "good",
+      "performance": "better",
       "userdetails": " can make mistakes. Consider checking important information.",
-      "fullDetails": "<p><span style=\"color: rgb(66, 66, 66);\">&nbsp;can make mistakes. Consider checking important information.&nbsp;can make mistakes. Consider checking important information.</span></p>"
-    },
-    {
-      "id": 1708278410083,
-      "username": "Ankit",
-      "email": "ankittest@asd.com",
-      "phone": "4879654125",
-      "active": false,
-      "gender": "male",
-      "technology": [
-        {
-          "value": "angular",
-          "label": "Angular"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        }
-      ],
-      "performance": "good",
-      "userdetails": "Here's the corrected version of your handelChange function and a few other adjustments:",
-      "fullDetails": "<p><span style=\"color: rgb(13, 13, 13);\">Here's the corrected version of your </span><code style=\"color: rgb(13, 13, 13);\">handelChange</code><span style=\"color: rgb(13, 13, 13);\"> function and a few other adjustments: Here's the corrected version of your </span><code style=\"color: rgb(13, 13, 13);\">handelChange</code><span style=\"color: rgb(13, 13, 13);\"> function and a few other adjustments:</span></p>"
+      "fullDetails": "<p><span style=\"color: rgb(66, 66, 66);\">&nbsp;can make mistakes. Consider checking important information.&nbsp;can make mistakes. Consider checking important information.</span></p>",
+      "id": 1708236488648
     }
   ]
 }
